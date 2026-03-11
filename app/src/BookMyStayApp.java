@@ -72,31 +72,16 @@ class BookingService {
         if (currentCount > 0) {
             double totalCost = roomDetails.getPricePerNight() * nights;
             inventory.updateAvailability(roomType, currentCount - 1);
-
             System.out.println("Booking Confirmation:");
             System.out.println("Room Type: " + roomType);
             System.out.println("Nights: " + nights);
             System.out.println("Total Price: " + totalCost);
-            System.out.println("Booking successful! Remaining " + roomType + " rooms: " + (currentCount - 1) + "\n");
+            System.out.println("Booking successful!\n");
         } else {
             System.out.println("Booking failed: No " + roomType + " rooms available.\n");
         }
     }
 }
 
-public class BookMyStayApp {
-    public static void main(String[] args) {
-        RoomInventory inventory = new RoomInventory();
-        BookingService bookingService = new BookingService();
-
-        SingleRoom single = new SingleRoom();
-        DoubleRoom doubleRm = new DoubleRoom();
-        SuiteRoom suite = new SuiteRoom();
-
-        System.out.println("Hotel Booking System\n");
-
-        bookingService.bookRoom(inventory, "Single", single, 3);
-        bookingService.bookRoom(inventory, "Double", doubleRm, 2);
-        bookingService.bookRoom(inventory, "Suite", suite, 5);
-    }
-}
+class CancellationService {
+    public void cancelBooking(RoomInventory inventory, String room
